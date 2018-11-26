@@ -1,11 +1,12 @@
 # TriviaGame
 
-Pseudocode:
+A TriviaGame about Sailing. 
 
-HTML & CSS:
--Create HTML: div for "quiz"; button for "start"; div for "results"
+There is a timer on each question and if the time runs out before an answer is clicked, the user gets the question incorrect.
 
--Style HTML using CSS. Put the above div's inside of a container within the html
+If the user guesses correctly, they get a point added to their score.
 
--Create a start button that disappears when clicked
-    -Also when clicked it displays a question and answers (essentially the start of the game)
+When the quiz is over, a final score screen appears with a restart button, as well.
+
+This game was created using HTML, CSS, JavaScript, and JQuery.
+

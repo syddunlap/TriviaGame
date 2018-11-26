@@ -1,17 +1,17 @@
 $(document).ready(function () {
 
     // Variable holding questions
-    var questionArray = ["Sailing is an Olympic sport. What year was it first included in the Olympics?", 
-    "On a sailboat, what is a sheet?",
-    "When someone asks you to grab the tiller, what are they asking you to do?",
-    "The right side of a boat is referred to as what?",
-    "You're sailing a boat with two masts with the mizzen mast located forward of the steering post. What type of boat are you on?",
-    "What are halyards used for?",
-    "Which of the following is NOT a turning maneuver in sailing?",
-    "What color flag must be flown when first entering the territorial waters of another country?",
-    "Large buoys used to denote a safe channel or passage for vessels in and out of the harbor are what color?"];
+    var questionArray = ["Sailing is an Olympic sport. What year was it first included in the Olympics?",
+        "On a sailboat, what is a sheet?",
+        "When someone asks you to grab the tiller, what are they asking you to do?",
+        "The right side of a boat is referred to as what?",
+        "You're sailing a boat with two masts with the mizzen mast located forward of the steering post. What type of boat are you on?",
+        "What are halyards used for?",
+        "Which of the following is NOT a turning maneuver in sailing?",
+        "What color flag must be flown when first entering the territorial waters of another country?",
+        "Large buoys used to denote a safe channel or passage for vessels in and out of the harbor are what color?"];
     // Variable holding answers
-    var answerArray = [["1896", "1904", "1920", "1944"], 
+    var answerArray = [["1896", "1904", "1920", "1944"],
     ["Another name for the sail", "A thin blanket on the bed", "The chartbook you're referencing", "Lines used for controlling and adjusting sails"],
     ["Tend to any plants and/or herb garden nearby", "Steer the boat", "Get the anchor ready", "Check coordinates and plot location on charts"],
     ["Bow", "Starboard", "Stern", "Port"],
@@ -21,17 +21,19 @@ $(document).ready(function () {
     ["White", "Red", "Yellow", "Green"],
     ["Blue & White", "Black & White", "Red & Yellow", "Red & Green"]];
     // Variable holding correct answers
-    var correctAnswerArray = ["1896", 
-    "Lines used for controlling and adjusting sails", 
-    "Steer the boat",
-    "Starboard",
-    "Ketch",
-    "Used to raise and lower the sails",
-    "Hull trimming",
-    "Yellow",
-    "Red & Green"];
+    var correctAnswerArray = ["1896",
+        "Lines used for controlling and adjusting sails",
+        "Steer the boat",
+        "Starboard",
+        "Ketch",
+        "Used to raise and lower the sails",
+        "Hull trimming",
+        "Yellow",
+        "Red & Green"];
 
     var question = 0;
+    var countdown = 25;
+    var intervalId;
 
     // Variables to hold score
     let correct = 0;
@@ -41,7 +43,8 @@ $(document).ready(function () {
     $("#quiz").hide();
 
     // Hide restart button until game is ended.
-    $("#restart").hide();
+    $(".restart").hide();
+    $("#results").hide();
 
     // Print the questions to HTML
     var gameHTML = $("#quiz")
@@ -51,10 +54,12 @@ $(document).ready(function () {
         // hide the start button
         $(".start").hide();
         startGame();
+        // Call the timer function
     });
 
     // Create startGame function
     function startGame() {
+        countDown();
         $(gameHTML).show();
         // show question
         $("#question").html(questionArray[question]);
@@ -66,8 +71,30 @@ $(document).ready(function () {
         $("#a4").html(answerArray[question][3]);
     };
 
+    // Create a timer function
+    function countDown() {
+        clearInterval(intervalId);
+        intervalId = setInterval(decrement, 1000);
+
+        function decrement(){
+            countdown--;
+            if (countdown === 0) {
+                clearInterval(decrement);
+                console.log("Time's Up")
+                stop();
+                incorrectAnswer();
+            }
+            $("#timer").html("Time Left: " + countdown);
+        }
+    }
+
+    // Stop Function
+    function stop() {
+        clearInterval(intervalId);
+    }
+    
     // Create a function for when an answer is clicked with if then statements
-    $("body").on("click", ".answer", function(event) {
+    $("body").on("click", ".answer", function (event) {
         let userAnswer = $(this).text();
 
         // If for correct answer:
@@ -79,13 +106,17 @@ $(document).ready(function () {
         else {
             incorrectAnswer();
         }
+
     });
+
+
 
     // A function to run when the correct answer is selected
     function correctAnswer() {
         correct++;
         $(gameHTML).hide();
         next();
+        countdown = 25;
         console.log("Correct Answers: " + correct);
     };
 
@@ -94,12 +125,13 @@ $(document).ready(function () {
         incorrect++;
         $(gameHTML).hide();
         next();
+        countdown = 25;
         console.log("Incorrect Answers: " + incorrect);
     }
 
     // A function to run the next question in the array 
     function next() {
-        if (question < 8) {
+        if (question < 1) {
             question++;
             startGame();
         }
@@ -112,9 +144,20 @@ $(document).ready(function () {
     // A function to show the final score at the end of the quiz
     function finalScore() {
         $("#results").html("Game Over!" + "<br><br>" +
-        "Correct Answers: " + correct + "<br>" +
-        "Incorrect Answers: " + incorrect);
-        $("#restart").show();
+            "Correct Answers: " + correct + "<br>" +
+            "Incorrect Answers: " + incorrect);
+        $(".restart").show();
+        $("#results").show();
     }
 
+    // When the restart button is clicked
+    $(".restart").click(function() {
+        $(".restart").hide();
+        $("#results").hide();
+        countdown = 25;
+        correct = 0;
+        incorrect = 0;
+        question = 0;
+        startGame();
+    })
 })

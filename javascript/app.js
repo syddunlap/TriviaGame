@@ -30,9 +30,10 @@ $(document).ready(function () {
         "Hull trimming",
         "Yellow",
         "Red & Green"];
-    // Variable when answer is correct
+    // Variables to hold message screen after user guesses or time is up:
     var userCorrect = "You're correct!!!"
     var userIncorrect = "You're wrong!!!"
+    var timerOut = "You're out of time!!!"
 
     var question = 0;
     var countdown = 25;
@@ -85,7 +86,7 @@ $(document).ready(function () {
                 clearInterval(decrement);
                 console.log("Time's Up")
                 stop();
-                incorrectAnswer();
+                timesUp();
             }
             $("#timer").html("Time Left: " + countdown);
         }
@@ -128,6 +129,16 @@ $(document).ready(function () {
         $(gameHTML).hide();
         $("#answerscreens").show();
         $("#incorrectAnswer").append(userIncorrect);
+        setTimeout(next, 1000 * 15);
+        console.log("Incorrect Answers: " + incorrect);
+    }
+
+    // A function to run when the timer is up
+    function timesUp() {
+        incorrect++;
+        $(gameHTML).hide();
+        $("#answerscreens").show();
+        $("#timesup").append(timerOut);
         setTimeout(next, 1000 * 15);
         console.log("Incorrect Answers: " + incorrect);
     }

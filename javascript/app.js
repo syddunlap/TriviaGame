@@ -30,6 +30,9 @@ $(document).ready(function () {
         "Hull trimming",
         "Yellow",
         "Red & Green"];
+    // Variable when answer is correct
+    var userCorrect = "You're correct!!!"
+    var userIncorrect = "You're wrong!!!"
 
     var question = 0;
     var countdown = 25;
@@ -76,7 +79,7 @@ $(document).ready(function () {
         clearInterval(intervalId);
         intervalId = setInterval(decrement, 1000);
 
-        function decrement(){
+        function decrement() {
             countdown--;
             if (countdown === 0) {
                 clearInterval(decrement);
@@ -92,7 +95,7 @@ $(document).ready(function () {
     function stop() {
         clearInterval(intervalId);
     }
-    
+
     // Create a function for when an answer is clicked with if then statements
     $("body").on("click", ".answer", function (event) {
         let userAnswer = $(this).text();
@@ -109,14 +112,13 @@ $(document).ready(function () {
 
     });
 
-
-
     // A function to run when the correct answer is selected
     function correctAnswer() {
         correct++;
         $(gameHTML).hide();
-        next();
-        countdown = 25;
+        $("#answerscreens").show();
+        $("#correctAnswer").append(userCorrect);
+        setTimeout(next, 1000 * 5);
         console.log("Correct Answers: " + correct);
     };
 
@@ -124,16 +126,19 @@ $(document).ready(function () {
     function incorrectAnswer() {
         incorrect++;
         $(gameHTML).hide();
-        next();
-        countdown = 25;
+        $("#answerscreens").show();
+        $("#incorrectAnswer").append(userIncorrect);
+        setTimeout(next, 1000 * 15);
         console.log("Incorrect Answers: " + incorrect);
     }
 
     // A function to run the next question in the array 
     function next() {
-        if (question < 1) {
+        if (question < 8) {
             question++;
+            $("#answerscreens").hide();
             startGame();
+            countdown = 25;
         }
 
         else {
@@ -143,6 +148,7 @@ $(document).ready(function () {
 
     // A function to show the final score at the end of the quiz
     function finalScore() {
+        $("#answerscreens").hide();
         $("#results").html("Game Over!" + "<br><br>" +
             "Correct Answers: " + correct + "<br>" +
             "Incorrect Answers: " + incorrect);
@@ -151,7 +157,7 @@ $(document).ready(function () {
     }
 
     // When the restart button is clicked
-    $(".restart").click(function() {
+    $(".restart").click(function () {
         $(".restart").hide();
         $("#results").hide();
         countdown = 25;

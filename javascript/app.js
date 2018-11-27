@@ -48,7 +48,6 @@ $(document).ready(function () {
 
     // Hide restart button until game is ended.
     $(".restart").hide();
-    $("#results").hide();
 
     // Print the questions to HTML
     var gameHTML = $("#quiz")
@@ -117,9 +116,9 @@ $(document).ready(function () {
     function correctAnswer() {
         correct++;
         $(gameHTML).hide();
-        $("#answerscreens").show();
-        $("#correctAnswer").append(userCorrect);
-        setTimeout(next, 1000 * 5);
+        $("#response").show();
+        $("#response").text(userCorrect);
+        setTimeout(next, 1000 * 8);
         console.log("Correct Answers: " + correct);
     };
 
@@ -127,9 +126,9 @@ $(document).ready(function () {
     function incorrectAnswer() {
         incorrect++;
         $(gameHTML).hide();
-        $("#answerscreens").show();
-        $("#incorrectAnswer").append(userIncorrect);
-        setTimeout(next, 1000 * 15);
+        $("#response").show();
+        $("#response").text(userIncorrect);
+        setTimeout(next, 1000 * 8);
         console.log("Incorrect Answers: " + incorrect);
     }
 
@@ -137,19 +136,19 @@ $(document).ready(function () {
     function timesUp() {
         incorrect++;
         $(gameHTML).hide();
-        $("#answerscreens").show();
-        $("#timesup").append(timerOut);
-        setTimeout(next, 1000 * 15);
+        $("#response").show();
+        $("#timesup").text(timerOut);
+        setTimeout(next, 1000 * 8);
         console.log("Incorrect Answers: " + incorrect);
     }
 
     // A function to run the next question in the array 
     function next() {
-        if (question < 8) {
-            question++;
-            $("#answerscreens").hide();
-            startGame();
+        if (question < 1) {
             countdown = 25;
+            $("#response").hide();
+            question++;
+            startGame();
         }
 
         else {
@@ -159,22 +158,22 @@ $(document).ready(function () {
 
     // A function to show the final score at the end of the quiz
     function finalScore() {
-        $("#answerscreens").hide();
+        $("#response").hide();
         $("#results").html("Game Over!" + "<br><br>" +
             "Correct Answers: " + correct + "<br>" +
             "Incorrect Answers: " + incorrect);
         $(".restart").show();
-        $("#results").show();
-    }
+        $("#finalScore").show();
 
-    // When the restart button is clicked
-    $(".restart").click(function () {
-        $(".restart").hide();
-        $("#results").hide();
-        countdown = 25;
-        correct = 0;
-        incorrect = 0;
-        question = 0;
-        startGame();
-    })
+        // When the restart button is clicked
+        $(".restart").click(function () {
+            $(".restart").hide();
+            $("#finalScore").hide();
+            countdown = 25;
+            correct = 0;
+            incorrect = 0;
+            question = 0;
+            startGame();
+        })
+    }
 })

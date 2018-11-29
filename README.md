@@ -1,12 +1,11 @@
 # TriviaGame
 
-A TriviaGame about Sailing. 
+Ready to test your Sailing knowledge? Then this Trivia Game is for you. Nine questions, each one with 25 seconds on the timer. As you move through, you'll be rewarded with GIFs eminating how well you did, or an explanation of the answer if you've guessed incorrectly. 
 
-There is a timer on each question and if the time runs out before an answer is clicked, the user gets the question incorrect.
+When you get your results, you'll get a chance to Restart the Game if you'd like to try again. Best of luck!
 
-If the user guesses correctly, they get a point added to their score.
-
-When the quiz is over, a final score screen appears with a restart button, as well.
-
-This game was created using HTML, CSS, JavaScript, and JQuery.
-
+## Languages Used
+-HTML5
+-CSS
+-JavaScript
+-jQuery

@@ -63,7 +63,7 @@ $(document).ready(function () {
 
     // Variables set at the beginning of the game
     var question = 0;
-    var countdown = 25;
+    var countdown = 30;
     var intervalId;
     // Variables to hold score
     let correct = 0;
@@ -91,7 +91,7 @@ $(document).ready(function () {
     function startGame() {
         $(gameHTML).show();
         
-        countdown = 25;
+        countdown = 30;
         $("#timer").html("Time Left: " + countdown);
         // show question
         $("#question").html(questionArray[question]);
@@ -157,7 +157,7 @@ $(document).ready(function () {
         $(gameHTML).hide();
         $("#response").show();
         $("#response").html(userIncorrect + "<br><br>" + answerExplain[question] + "<br><br>" + giphyArray[question]);
-        setTimeout(next, 1000 * 10);
+        setTimeout(next, 1000 * 15);
         console.log("Incorrect Answers: " + incorrect);
     }
 
@@ -167,7 +167,7 @@ $(document).ready(function () {
         $(gameHTML).hide();
         $("#response").show();
         $("#response").html(timerOut + "<br><br>" + answerExplain[question] + "<br><br>" + timeUpGif);
-        setTimeout(next, 1000 * 10);
+        setTimeout(next, 1000 * 15);
         console.log("Incorrect Answers: " + incorrect);
     }
 

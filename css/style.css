@@ -46,6 +46,7 @@ button:hover {
     color: white;
 }
 
+/* Style the snwer buttons */ 
 .answerbuttons button {
     padding: 10px 24px;
     cursor: pointer;
@@ -54,7 +55,14 @@ button:hover {
     margin: 0 auto;
 }
 
+/* style the restart button */
 .restart {
     margin-top: 10px;
 }
 
+/* Style the gifs */
+.giphy {
+    width: 600px;
+    height: 400px;
+    border: 1px solid rgb(38, 62, 90);
+}

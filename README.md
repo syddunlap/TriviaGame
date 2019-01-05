@@ -9,3 +9,5 @@ When you get your results, you'll get a chance to Restart the Game if you'd like
 -CSS
 -JavaScript
 -jQuery
+
+[Link to Project](https://syddunlap.github.io/TriviaGame/)

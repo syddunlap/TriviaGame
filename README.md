@@ -5,9 +5,14 @@ Ready to test your Sailing knowledge? Then this Trivia Game is for you. Nine que
 When you get your results, you'll get a chance to Restart the Game if you'd like to try again. Best of luck!
 
 ## Languages Used
--HTML5
--CSS
--JavaScript
--jQuery
+- HTML5
+- CSS
+- JavaScript
+- jQuery
 
 [Link to Project](https://syddunlap.github.io/TriviaGame/)
+
+## Project Screenshots
+[Question Screen](images/questionscreen.png)
+
+[Wrong Answer](images/wronganswer.png)

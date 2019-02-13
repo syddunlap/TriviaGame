@@ -63,7 +63,7 @@ $(document).ready(function () {
 
     // Variables set at the beginning of the game
     var question = 0;
-    var countdown = 30;
+    var countdown = 20;
     var intervalId;
     // Variables to hold score
     let correct = 0;

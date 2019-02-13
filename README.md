@@ -13,6 +13,6 @@ When you get your results, you'll get a chance to Restart the Game if you'd like
 [Link to Project](https://syddunlap.github.io/TriviaGame/)
 
 ## Project Screenshots
-[Question Screen](images/questionscreen.png)
+![Question Screen](images/questionscreen.png)
 
-[Wrong Answer](images/wronganswer.png)
+![Wrong Answer](images/wronganswer.png)

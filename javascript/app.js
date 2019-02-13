@@ -91,7 +91,7 @@ $(document).ready(function () {
     function startGame() {
         $(gameHTML).show();
         
-        countdown = 30;
+        countdown = 20;
         $("#timer").html("Time Left: " + countdown);
         // show question
         $("#question").html(questionArray[question]);
@@ -157,7 +157,7 @@ $(document).ready(function () {
         $(gameHTML).hide();
         $("#response").show();
         $("#response").html(userIncorrect + "<br><br>" + answerExplain[question] + "<br><br>" + giphyArray[question]);
-        setTimeout(next, 1000 * 15);
+        setTimeout(next, 1000 * 10);
         console.log("Incorrect Answers: " + incorrect);
     }
 
@@ -167,7 +167,7 @@ $(document).ready(function () {
         $(gameHTML).hide();
         $("#response").show();
         $("#response").html(timerOut + "<br><br>" + answerExplain[question] + "<br><br>" + timeUpGif);
-        setTimeout(next, 1000 * 15);
+        setTimeout(next, 1000 * 10);
         console.log("Incorrect Answers: " + incorrect);
     }
 

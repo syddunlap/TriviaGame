@@ -1,4 +1,4 @@
-# TriviaGame
+# Sailing Trivia Game
 
 Ready to test your Sailing knowledge? Then this Trivia Game is for you. Nine questions, each one with 25 seconds on the timer. As you move through, you'll be rewarded with GIFs eminating how well you did, or an explanation of the answer if you've guessed incorrectly. 
 
